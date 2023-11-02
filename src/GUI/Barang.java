@@ -68,7 +68,7 @@ public class Barang extends javax.swing.JFrame {
 
         jLabel7.setText("Stok");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PIlihan", "Baju", "celana", "Topi", "Sepatu" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PIlih Kode Jenis Barang" }));
 
         jTextField3.setEnabled(false);
 
