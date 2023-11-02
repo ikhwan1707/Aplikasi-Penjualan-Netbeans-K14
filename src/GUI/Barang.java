@@ -72,9 +72,9 @@ public class Barang extends javax.swing.JFrame {
 
         jTextField3.setEnabled(false);
 
-        jLabel8.setText("RP");
+        jLabel8.setText("Rp");
 
-        jLabel9.setText("RP");
+        jLabel9.setText("Rp");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel10.setText(" Entri Data Barang");
