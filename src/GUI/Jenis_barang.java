@@ -30,17 +30,17 @@ public class Jenis_barang extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        Txtkodejenis = new javax.swing.JTextField();
+        Txtjenisbarang = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        Tblhasil = new javax.swing.JTable();
         jLabel10 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        Btnnew = new javax.swing.JButton();
+        Btnsave = new javax.swing.JButton();
+        Btnupdate = new javax.swing.JButton();
+        Btndelete = new javax.swing.JButton();
+        Btncansel = new javax.swing.JButton();
+        Btnclose = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -61,7 +61,13 @@ public class Jenis_barang extends javax.swing.JFrame {
 
         jLabel2.setText("Jenis Barang");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        Txtkodejenis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtkodejenisActionPerformed(evt);
+            }
+        });
+
+        Tblhasil.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -72,22 +78,27 @@ public class Jenis_barang extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(Tblhasil);
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel10.setText("Entri Data Jenis Barang");
 
-        jButton1.setText("Add  New");
+        Btnnew.setText("Add  New");
 
-        jButton2.setText("Save");
+        Btnsave.setText("Save");
 
-        jButton3.setText("Update");
+        Btnupdate.setText("Update");
 
-        jButton4.setText("Delete");
+        Btndelete.setText("Delete");
 
-        jButton5.setText("Cencel");
+        Btncansel.setText("Cancel");
+        Btncansel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtncanselActionPerformed(evt);
+            }
+        });
 
-        jButton6.setText("Close");
+        Btnclose.setText("Close");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,20 +116,20 @@ public class Jenis_barang extends javax.swing.JFrame {
                                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
-                                    .addComponent(jTextField1)))
+                                    .addComponent(Txtjenisbarang, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
+                                    .addComponent(Txtkodejenis)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(Btnnew)
                                 .addGap(30, 30, 30)
-                                .addComponent(jButton2)
+                                .addComponent(Btnsave)
                                 .addGap(45, 45, 45)
-                                .addComponent(jButton3)
+                                .addComponent(Btnupdate)
                                 .addGap(34, 34, 34)
-                                .addComponent(jButton4)
+                                .addComponent(Btndelete)
                                 .addGap(26, 26, 26)
-                                .addComponent(jButton5)
+                                .addComponent(Btncansel)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton6))))
+                                .addComponent(Btnclose))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(223, 223, 223)
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -132,26 +143,34 @@ public class Jenis_barang extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Txtkodejenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Txtjenisbarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6))
+                    .addComponent(Btnnew)
+                    .addComponent(Btnsave)
+                    .addComponent(Btnupdate)
+                    .addComponent(Btndelete)
+                    .addComponent(Btncansel)
+                    .addComponent(Btnclose))
                 .addGap(204, 204, 204))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void TxtkodejenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtkodejenisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtkodejenisActionPerformed
+
+    private void BtncanselActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtncanselActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtncanselActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,20 +208,20 @@ public class Jenis_barang extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton Btncansel;
+    private javax.swing.JButton Btnclose;
+    private javax.swing.JButton Btndelete;
+    private javax.swing.JButton Btnnew;
+    private javax.swing.JButton Btnsave;
+    private javax.swing.JButton Btnupdate;
+    private javax.swing.JTable Tblhasil;
+    private javax.swing.JTextField Txtjenisbarang;
+    private javax.swing.JTextField Txtkodejenis;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
