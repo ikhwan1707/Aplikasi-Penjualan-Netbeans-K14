@@ -141,6 +141,11 @@ public class Barang_Masuk extends javax.swing.JFrame {
         jLabel18.setText("Total Rp");
 
         Btntransaction.setText("Save transaction");
+        Btntransaction.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtntransactionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -230,15 +235,15 @@ public class Barang_Masuk extends javax.swing.JFrame {
                                         .addComponent(Btnitem, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(Btnaddnew)
-                                .addGap(26, 26, 26)
-                                .addComponent(Btntransaction, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(49, 49, 49)
-                                .addComponent(Btnclose)
                                 .addGap(18, 18, 18)
+                                .addComponent(Btntransaction, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27)
+                                .addComponent(Btnclose)
+                                .addGap(29, 29, 29)
                                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(Txttotalrp, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(446, Short.MAX_VALUE))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,15 +305,15 @@ public class Barang_Masuk extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Btnitem)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Btnaddnew)
                     .addComponent(Btntransaction)
                     .addComponent(Btnclose)
                     .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Txttotalrp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(181, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         pack();
@@ -317,6 +322,10 @@ public class Barang_Masuk extends javax.swing.JFrame {
     private void TxtnamapetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtnamapetugasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtnamapetugasActionPerformed
+
+    private void BtntransactionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtntransactionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtntransactionActionPerformed
 
     /**
      * @param args the command line arguments
