@@ -344,6 +344,16 @@ public class Penjualan_Barang extends javax.swing.JFrame {
 
     private void BtncaridataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtncaridataActionPerformed
         // TODO add your handling code here:
+        try {
+            Connection kont = connection.getKoneksi();
+            Statement stt = kon.createStatement();
+            String SQL = "SELECT * FROM tblpenjualan where nofaktur='"+nofaktur.getText().toString()+"'";
+            ResultSet res = stt.executeQuery(SQL);
+            res.absolute(1);
+            TampilGridDetail();
+            TglPenjualan.setText(res.getString("tglpenjualan"));
+            ID
+        }
     }//GEN-LAST:event_BtncaridataActionPerformed
 
     private void TxtnofakturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtnofakturActionPerformed
