@@ -56,9 +56,9 @@
                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="Txtnofaktur" min="-2" pref="77" max="-2" attributes="0"/>
+                                  <Component id="TxtNofaktur" min="-2" pref="77" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
-                                      <Component id="Cmbid" min="-2" max="-2" attributes="0"/>
+                                      <Component id="CmbIDPetugas" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabel5" min="-2" pref="89" max="-2" attributes="0"/>
                                   </Group>
@@ -75,7 +75,7 @@
                       <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="Txttanggalpenjualan" min="-2" pref="185" max="-2" attributes="0"/>
+                      <Component id="TxtTglPenjualan" min="-2" pref="185" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="180" max="-2" attributes="0"/>
@@ -138,9 +138,9 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="Txtsisa" alignment="0" max="32767" attributes="0"/>
-                          <Component id="Txttotalrp" max="32767" attributes="0"/>
-                          <Component id="Txtbayar" max="32767" attributes="0"/>
+                          <Component id="TxtSisa" alignment="0" max="32767" attributes="0"/>
+                          <Component id="TxtTotal" max="32767" attributes="0"/>
+                          <Component id="TxtBayar" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
@@ -164,15 +164,15 @@
               <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Txtnofaktur" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="TxtNofaktur" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                   <Component id="Btncaridata" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Txttanggalpenjualan" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TxtTglPenjualan" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Cmbid" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="CmbIDPetugas" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Txtnamapetugas" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -219,7 +219,7 @@
                       <Component id="Btncensel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="Btnclose" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Txtbayar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="TxtBayar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -229,10 +229,10 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Txttotalrp" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TxtTotal" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="Txtsisa" min="-2" max="-2" attributes="0"/>
+                  <Component id="TxtSisa" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="140" max="32767" attributes="0"/>
           </Group>
@@ -263,12 +263,12 @@
         <Property name="text" type="java.lang.String" value="Tanggal Penjualan"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="Txtnofaktur">
+    <Component class="javax.swing.JTextField" name="TxtNofaktur">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TxtnofakturActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TxtNofakturActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JComboBox" name="Cmbid">
+    <Component class="javax.swing.JComboBox" name="CmbIDPetugas">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
@@ -277,7 +277,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CmbidActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CmbIDPetugasActionPerformed"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -298,9 +298,9 @@
     </Component>
     <Component class="javax.swing.JTextField" name="Txtnamapetugas">
     </Component>
-    <Component class="javax.swing.JTextField" name="Txttanggalpenjualan">
+    <Component class="javax.swing.JTextField" name="TxtTglPenjualan">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TxttanggalpenjualanActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TxtTglPenjualanActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
@@ -438,11 +438,11 @@
         <Property name="text" type="java.lang.String" value="Total Rp"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="Txtbayar">
+    <Component class="javax.swing.JTextField" name="TxtBayar">
     </Component>
-    <Component class="javax.swing.JTextField" name="Txtsisa">
+    <Component class="javax.swing.JTextField" name="TxtSisa">
     </Component>
-    <Component class="javax.swing.JTextField" name="Txttotalrp">
+    <Component class="javax.swing.JTextField" name="TxtTotal">
     </Component>
   </SubComponents>
 </Form>

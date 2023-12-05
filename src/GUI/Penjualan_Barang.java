@@ -4,6 +4,17 @@
  */
 package GUI;
 
+import java.util.HashSet;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author SMKI Utama5
@@ -15,6 +26,10 @@ public class Penjualan_Barang extends javax.swing.JFrame {
      */
     public Penjualan_Barang() {
         initComponents();
+//        loadData();
+//        kosong();
+//        setEnabledFalse();
+       
     }
 
     /**
@@ -32,12 +47,12 @@ public class Penjualan_Barang extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        Txtnofaktur = new javax.swing.JTextField();
-        Cmbid = new javax.swing.JComboBox<>();
+        TxtNofaktur = new javax.swing.JTextField();
+        CmbIDPetugas = new javax.swing.JComboBox<>();
         Btncaridata = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         Txtnamapetugas = new javax.swing.JTextField();
-        Txttanggalpenjualan = new javax.swing.JTextField();
+        TxtTglPenjualan = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         Cmbkodebarang = new javax.swing.JComboBox<>();
@@ -63,9 +78,9 @@ public class Penjualan_Barang extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        Txtbayar = new javax.swing.JTextField();
-        Txtsisa = new javax.swing.JTextField();
-        Txttotalrp = new javax.swing.JTextField();
+        TxtBayar = new javax.swing.JTextField();
+        TxtSisa = new javax.swing.JTextField();
+        TxtTotal = new javax.swing.JTextField();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -91,16 +106,16 @@ public class Penjualan_Barang extends javax.swing.JFrame {
 
         jLabel4.setText("Tanggal Penjualan");
 
-        Txtnofaktur.addActionListener(new java.awt.event.ActionListener() {
+        TxtNofaktur.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtnofakturActionPerformed(evt);
+                TxtNofakturActionPerformed(evt);
             }
         });
 
-        Cmbid.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Data Petugas" }));
-        Cmbid.addActionListener(new java.awt.event.ActionListener() {
+        CmbIDPetugas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Data Petugas" }));
+        CmbIDPetugas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CmbidActionPerformed(evt);
+                CmbIDPetugasActionPerformed(evt);
             }
         });
 
@@ -113,9 +128,9 @@ public class Penjualan_Barang extends javax.swing.JFrame {
 
         jLabel5.setText("Nama Petugas");
 
-        Txttanggalpenjualan.addActionListener(new java.awt.event.ActionListener() {
+        TxtTglPenjualan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxttanggalpenjualanActionPerformed(evt);
+                TxtTglPenjualanActionPerformed(evt);
             }
         });
 
@@ -185,9 +200,9 @@ public class Penjualan_Barang extends javax.swing.JFrame {
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Txtnofaktur, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TxtNofaktur, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(Cmbid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(CmbIDPetugas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -199,7 +214,7 @@ public class Penjualan_Barang extends javax.swing.JFrame {
                         .addGap(71, 71, 71)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Txttanggalpenjualan, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(TxtTglPenjualan, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(180, 180, 180))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -251,9 +266,9 @@ public class Penjualan_Barang extends javax.swing.JFrame {
                             .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Txtsisa)
-                            .addComponent(Txttotalrp)
-                            .addComponent(Txtbayar)))
+                            .addComponent(TxtSisa)
+                            .addComponent(TxtTotal)
+                            .addComponent(TxtBayar)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane2)))
@@ -270,14 +285,14 @@ public class Penjualan_Barang extends javax.swing.JFrame {
                 .addGap(53, 53, 53)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(Txtnofaktur, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TxtNofaktur, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Btncaridata)
                     .addComponent(jLabel4)
-                    .addComponent(Txttanggalpenjualan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TxtTglPenjualan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(Cmbid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CmbIDPetugas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
                     .addComponent(Txtnamapetugas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
@@ -318,7 +333,7 @@ public class Penjualan_Barang extends javax.swing.JFrame {
                         .addComponent(Btncensel)
                         .addComponent(Btnclose)
                         .addComponent(jLabel14)
-                        .addComponent(Txtbayar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(TxtBayar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -326,39 +341,47 @@ public class Penjualan_Barang extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel16)
-                            .addComponent(Txttotalrp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(Txtsisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TxtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(TxtSisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(140, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CmbidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CmbidActionPerformed
+    private void CmbIDPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CmbIDPetugasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CmbidActionPerformed
+    }//GEN-LAST:event_CmbIDPetugasActionPerformed
 
-    private void TxttanggalpenjualanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxttanggalpenjualanActionPerformed
+    private void TxtTglPenjualanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtTglPenjualanActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TxttanggalpenjualanActionPerformed
+    }//GEN-LAST:event_TxtTglPenjualanActionPerformed
 
     private void BtncaridataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtncaridataActionPerformed
         // TODO add your handling code here:
-        try {
-            Connection kont = connection.getKoneksi();
-            Statement stt = kon.createStatement();
-            String SQL = "SELECT * FROM tblpenjualan where nofaktur='"+nofaktur.getText().toString()+"'";
-            ResultSet res = stt.executeQuery(SQL);
-            res.absolute(1);
-            TampilGridDetail();
-            TglPenjualan.setText(res.getString("tglpenjualan"));
-            ID
-        }
+//        try {
+//            Connection kont = connection.getKoneksi();
+//            Statement stt = kon.createStatement();
+//            String SQL = "SELECT * FROM tblpenjualan where nofaktur='"+TxtNofaktur.getText().toString()+"'";
+//            ResultSet res = stt.executeQuery(SQL);
+//            res.absolute(1);
+//             // TampilGridDetail;
+//            TxtTglPenjualan.setText(res.getString("tglpenjualan"));
+//            CmbIDPetugas.setSelectedItem(res.getString("idpetugas"));
+//            TxtBayar.setText(res.getString("bayar"));
+//            TxtSisa.setText(res.getString("sisa"));
+//            TxtTotal.setText(res.getString("total"));
+//            Btnsave.setEnabled(false);
+//            TxtNofaktur.setEnabled(false);
+//            Btncaridata.setEnabled(false);
+//        } catch (SQLException ex) {
+//            System.out.println("Terjadi Error"+tex.getMessage());
+//        }
     }//GEN-LAST:event_BtncaridataActionPerformed
 
-    private void TxtnofakturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtnofakturActionPerformed
+    private void TxtNofakturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtNofakturActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TxtnofakturActionPerformed
+    }//GEN-LAST:event_TxtNofakturActionPerformed
 
     /**
      * @param args the command line arguments
@@ -403,20 +426,20 @@ public class Penjualan_Barang extends javax.swing.JFrame {
     private javax.swing.JButton Btnhitung;
     private javax.swing.JButton Btnnew;
     private javax.swing.JButton Btnsave;
-    private javax.swing.JComboBox<String> Cmbid;
+    private javax.swing.JComboBox<String> CmbIDPetugas;
     private javax.swing.JComboBox<String> Cmbkodebarang;
     private javax.swing.JTable Tblhasil;
-    private javax.swing.JTextField Txtbayar;
+    private javax.swing.JTextField TxtBayar;
+    private javax.swing.JTextField TxtNofaktur;
+    private javax.swing.JTextField TxtSisa;
+    private javax.swing.JTextField TxtTglPenjualan;
+    private javax.swing.JTextField TxtTotal;
     private javax.swing.JTextField Txtharga;
     private javax.swing.JTextField Txtjumlah;
     private javax.swing.JTextField Txtnamabarang;
     private javax.swing.JTextField Txtnamapetugas;
-    private javax.swing.JTextField Txtnofaktur;
-    private javax.swing.JTextField Txtsisa;
     private javax.swing.JTextField Txtstok;
-    private javax.swing.JTextField Txttanggalpenjualan;
     private javax.swing.JTextField Txttotal;
-    private javax.swing.JTextField Txttotalrp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

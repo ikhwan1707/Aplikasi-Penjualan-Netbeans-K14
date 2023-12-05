@@ -3,6 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package GUI;
+import java.sql.*;
+import java.text.SimpleDateFormat;
+import javax.swing.table.DefaultTableModel;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,9 +38,9 @@ public class Jenis_barang extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         Txtkodejenis = new javax.swing.JTextField();
-        Txtjenisbarang = new javax.swing.JTextField();
+        txtnama = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        Tblhasil = new javax.swing.JTable();
+        tblhasil = new javax.swing.JTable();
         jLabel10 = new javax.swing.JLabel();
         Btnnew = new javax.swing.JButton();
         Btnsave = new javax.swing.JButton();
@@ -67,7 +74,13 @@ public class Jenis_barang extends javax.swing.JFrame {
             }
         });
 
-        Tblhasil.setModel(new javax.swing.table.DefaultTableModel(
+        txtnama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtnamaActionPerformed(evt);
+            }
+        });
+
+        tblhasil.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -78,7 +91,12 @@ public class Jenis_barang extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(Tblhasil);
+        tblhasil.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblhasilMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tblhasil);
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel10.setText("Entri Data Jenis Barang");
@@ -86,10 +104,25 @@ public class Jenis_barang extends javax.swing.JFrame {
         Btnnew.setText("Add  New");
 
         Btnsave.setText("Save");
+        Btnsave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnsaveActionPerformed(evt);
+            }
+        });
 
         Btnupdate.setText("Update");
+        Btnupdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnupdateActionPerformed(evt);
+            }
+        });
 
         Btndelete.setText("Delete");
+        Btndelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtndeleteActionPerformed(evt);
+            }
+        });
 
         Btncansel.setText("Cancel");
         Btncansel.addActionListener(new java.awt.event.ActionListener() {
@@ -111,13 +144,13 @@ public class Jenis_barang extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(Txtjenisbarang, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
-                                    .addComponent(Txtkodejenis)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(42, 42, 42)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(Txtkodejenis, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtnama, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(Btnnew)
                                 .addGap(30, 30, 30)
@@ -147,7 +180,7 @@ public class Jenis_barang extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(Txtjenisbarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtnama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(57, 57, 57)
@@ -171,6 +204,59 @@ public class Jenis_barang extends javax.swing.JFrame {
     private void BtncanselActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtncanselActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BtncanselActionPerformed
+
+    private void BtnsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnsaveActionPerformed
+        // TODO add your handling code here:
+        String kode = Txtkodejenis.getText();
+    String nama = txtnama.getText();
+    
+        if (nama.isEmpty() || kode.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Kolom wajib di isi !","Error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        try {
+            String sql = "INSERT INTO tbljenis(KodeJenis,Jenis) VALUES(?,?)";
+            PreparedStatement st = conn.prepareStatement(sql);
+             st.setString(1, kode);
+            st.setString(2, nama);
+           
+            int rowInserted = st.executeUpdate();
+            if(rowInserted >0){
+                JOptionPane.showMessageDialog(this, "Data sukses");
+                resetform();
+                loadData();
+                
+            };
+            st.close();
+        } catch (Exception e) {
+             Logger.getLogger(Jenis.class.getName()).log(Level.SEVERE,null,e);
+        }
+    }//GEN-LAST:event_BtnsaveActionPerformed
+
+    private void BtnupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnupdateActionPerformed
+        // TODO add your handling code here:
+         
+    }//GEN-LAST:event_BtnupdateActionPerformed
+
+    private void tblhasilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblhasilMouseClicked
+        // TODO add your handling code here:
+        
+        
+//        btnupdate.setEnabled(true);
+//        btntambah.setEnabled(false);
+//        btnhapus.setEnabled(true);
+    }//GEN-LAST:event_tblhasilMouseClicked
+
+    private void BtndeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtndeleteActionPerformed
+        // TODO add your handling code here:
+         
+    //GEN-LAST:event_btnhapusActionPerformed
+    }//GEN-LAST:event_BtndeleteActionPerformed
+
+    private void txtnamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnamaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtnamaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -214,8 +300,6 @@ public class Jenis_barang extends javax.swing.JFrame {
     private javax.swing.JButton Btnnew;
     private javax.swing.JButton Btnsave;
     private javax.swing.JButton Btnupdate;
-    private javax.swing.JTable Tblhasil;
-    private javax.swing.JTextField Txtjenisbarang;
     private javax.swing.JTextField Txtkodejenis;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -223,5 +307,8 @@ public class Jenis_barang extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblhasil;
+    private javax.swing.JTextField txtnama;
     // End of variables declaration//GEN-END:variables
 }
+
